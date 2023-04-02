@@ -15,13 +15,14 @@ public class PlayerMover : MonoBehaviour
 
     private const float _minRangeBetweenTarget = 0.1f;
 
-    private int _defaultSortingOrder;
-
-    
+    private float _zPosition;
+   
 
     private void Start()
     {
-        _targetPosition = new Vector3(0, 0);
+        _zPosition = transform.position.z;
+
+        _targetPosition = new Vector3(0, 0, _zPosition);
     }
 
     private void Update()
@@ -29,7 +30,7 @@ public class PlayerMover : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            _targetPosition = new Vector3(mousePosition.x, mousePosition.y);
+            _targetPosition = new Vector3(mousePosition.x, mousePosition.y, _zPosition);
         } 
 
         transform.position += _moveDirection * Time.deltaTime * _speed;
@@ -53,7 +54,7 @@ public class PlayerMover : MonoBehaviour
                 {
                     if (hits[i].collider != null && hits[i].collider.isTrigger == false)
                     {
-                        _moveDirection = new Vector3(hits[i].normal.x, hits[i].normal.y, transform.position.z) + _targetDirection.normalized;
+                        _moveDirection = new Vector3(hits[i].normal.x, hits[i].normal.y, _zPosition) + _targetDirection.normalized;
 
                         isCollider = true;
                     }
