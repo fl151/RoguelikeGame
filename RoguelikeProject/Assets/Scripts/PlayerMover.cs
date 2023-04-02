@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Tilemaps;
+
 
 public class PlayerMover : MonoBehaviour
 {
