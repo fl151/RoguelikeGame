@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class EnemyStateMachine : MonoBehaviour
@@ -8,6 +7,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     private Player _target;
     private State _currentState;
+    private bool _canTransit = true;
 
     public State Current => _currentState;
 
@@ -17,9 +17,19 @@ public class EnemyStateMachine : MonoBehaviour
         Reset(_firstState);
     }
 
+    public void StopTransits()
+    {
+        _canTransit = false;
+    }
+
+    public void StartTransits()
+    {
+        _canTransit = true;
+    }
+
     private void Update()
     {
-        if (_currentState == null)
+        if (_currentState == null || _canTransit == false)
             return;
 
         var nextState = _currentState.GetNextState();

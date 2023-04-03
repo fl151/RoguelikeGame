@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int _health;
 
-    // Update is called once per frame
-    void Update()
+    public void ApplyDamage(int damage)
     {
-        
+        if (damage > 0)
+        {
+            _health -= damage;
+        }
     }
 }

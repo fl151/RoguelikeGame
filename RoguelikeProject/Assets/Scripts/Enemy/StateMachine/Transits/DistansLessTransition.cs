@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
-public class DistansTransition : Transition
+public class DistansLessTransition : Transition
 {
     [SerializeField] private float _transitionRange;
     [SerializeField] private float _rangetSpread;

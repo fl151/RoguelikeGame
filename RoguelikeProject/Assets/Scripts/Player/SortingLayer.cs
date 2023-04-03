@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class SortingPlayerLayer : MonoBehaviour
+public class SortingLayer : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
 
