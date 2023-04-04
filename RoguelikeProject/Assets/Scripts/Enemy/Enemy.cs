@@ -4,11 +4,17 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Player _target;
     [SerializeField] private int _maxHealth;
+    [SerializeField] private GameObject _prefab;
 
     private int _currentHealth;
 
     public bool IsDied { get; private set; }
     public Player Target => _target;
+
+    private void Awake()
+    {
+        Instantiate(_prefab, gameObject.transform);
+    }
 
     private void Start()
     {

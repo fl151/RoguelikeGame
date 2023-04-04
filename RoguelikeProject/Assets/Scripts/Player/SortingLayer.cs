@@ -12,11 +12,13 @@ public class SortingLayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _spriteRenderer.sortingOrder = collision.GetComponent<TilemapRenderer>().sortingOrder - 1;
+        if (collision.GetComponent<Enemy>() == null && collision.GetComponent<Player>() == null)
+            _spriteRenderer.sortingOrder = collision.GetComponent<TilemapRenderer>().sortingOrder - 1;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _spriteRenderer.sortingOrder = collision.GetComponent<TilemapRenderer>().sortingOrder + 1;
+        if (collision.GetComponent<Enemy>() == null && collision.GetComponent<Player>() == null)
+            _spriteRenderer.sortingOrder = collision.GetComponent<TilemapRenderer>().sortingOrder + 1;
     }
 }

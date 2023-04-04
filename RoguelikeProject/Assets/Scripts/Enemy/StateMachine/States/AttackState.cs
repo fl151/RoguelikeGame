@@ -24,15 +24,15 @@ public class AttackState : State
 
     private void Update()
     {
-        if (_attackCorutine == null)
+        if (_attackCorutine != null)
             return;
 
-        StartCoroutine(AttackCoroutine());
+        _attackCorutine = StartCoroutine(AttackCoroutine());
     }
 
     private void Attack(Player target)
     {
-        _animator.Play("Attack");
+        _animator.Play("attack");
         target.ApplyDamage(_damage);
     }
 
@@ -40,14 +40,14 @@ public class AttackState : State
     {
         _machine.StopTransits();
 
-        yield return new WaitForSeconds(_delay / 2);
-
         Attack(Target);
+        Debug.Log("attack");
 
-        yield return new WaitForSeconds(_delay / 2);
-
-        StopCoroutine(_attackCorutine);
+        yield return new WaitForSeconds(_delay);
 
         _machine.StartTransits();
+
+        StopCoroutine(_attackCorutine);
+        _attackCorutine = null;
     }
 }
