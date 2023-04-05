@@ -11,17 +11,6 @@ public class Enemy : MonoBehaviour
     public bool IsDied { get; private set; }
     public Player Target => _target;
 
-    private void Awake()
-    {
-        Instantiate(_prefab, gameObject.transform);
-    }
-
-    private void Start()
-    {
-        _currentHealth = _maxHealth;
-        IsDied = false;
-    }
-
     public void TryApplyDamage(int damage)
     {
         TakeDamage(damage);
@@ -37,12 +26,23 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected virtual void TakeDamage(int damage)
+    private void TakeDamage(int damage)
     {
         if (damage > 0)
         {
             _currentHealth -= damage;
         }
+    }
+
+    private void Awake()
+    {
+        Instantiate(_prefab, gameObject.transform);
+    }
+
+    private void Start()
+    {
+        _currentHealth = _maxHealth;
+        IsDied = false;
     }
 
     private void TryDie()

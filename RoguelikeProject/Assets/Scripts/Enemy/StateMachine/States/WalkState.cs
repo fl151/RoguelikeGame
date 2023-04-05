@@ -11,14 +11,6 @@ public class WalkState : State
 
     private const float _minRangeBetweenTarget = 0.1f;
 
-    private float _zPosition;
-
-
-    private void Start()
-    {
-        _zPosition = transform.position.z;
-    }
-
     private void Update()
     {
         transform.position += _moveDirection * Time.deltaTime * _speed;
@@ -40,9 +32,9 @@ public class WalkState : State
 
                 for (int i = 1; i < hits.Length; i++)
                 {
-                    if (hits[i].collider != null && hits[i].collider.isTrigger == false)
+                    if (hits[i].transform.GetComponent<Enemy>() == false && hits[i].collider != null && hits[i].collider.isTrigger == false)
                     {
-                        _moveDirection = new Vector3(hits[i].normal.x, hits[i].normal.y, _zPosition) + _targetDirection.normalized;
+                        _moveDirection = new Vector3(hits[i].normal.x, hits[i].normal.y, 0) + _targetDirection.normalized;
 
                         isCollider = true;
                     }

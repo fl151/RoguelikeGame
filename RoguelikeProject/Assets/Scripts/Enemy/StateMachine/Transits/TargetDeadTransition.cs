@@ -1,4 +1,3 @@
-
 public class TargetDeadTransition : Transition
 {
     private void Update()

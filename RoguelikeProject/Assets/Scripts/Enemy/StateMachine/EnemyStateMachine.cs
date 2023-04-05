@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class EnemyStateMachine : MonoBehaviour
@@ -11,12 +10,6 @@ public class EnemyStateMachine : MonoBehaviour
 
     public State Current => _currentState;
 
-    private void Start()
-    {
-        _target = GetComponent<Enemy>().Target;
-        Reset(_firstState);
-    }
-
     public void StopTransits()
     {
         _canTransit = false;
@@ -25,6 +18,12 @@ public class EnemyStateMachine : MonoBehaviour
     public void StartTransits()
     {
         _canTransit = true;
+    }
+
+    private void Start()
+    {
+        _target = GetComponent<Enemy>().Target;
+        Reset(_firstState);
     }
 
     private void Update()

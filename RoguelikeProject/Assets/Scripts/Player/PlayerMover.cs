@@ -1,6 +1,6 @@
 using UnityEngine;
 
-
+[RequireComponent(typeof(Player))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -9,17 +9,14 @@ public class PlayerMover : MonoBehaviour
 
     private Vector3 _targetDirection;
     private Vector3 _moveDirection;
+    private Player _player;
 
     private const float _minRangeBetweenTarget = 0.1f;
 
-    private float _zPosition;
-   
-
     private void Start()
     {
-        _zPosition = transform.position.z;
-
-        _targetPosition = new Vector3(0, 0, _zPosition);
+        _player = GetComponent<Player>();
+        _targetPosition = transform.position;
     }
 
     private void Update()
@@ -27,8 +24,8 @@ public class PlayerMover : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            _targetPosition = new Vector3(mousePosition.x, mousePosition.y, _zPosition);
-        } 
+            _targetPosition = new Vector3(mousePosition.x, mousePosition.y, 0);
+        }
 
         transform.position += _moveDirection * Time.deltaTime * _speed;
     }
@@ -41,29 +38,31 @@ public class PlayerMover : MonoBehaviour
         {
             _moveDirection = _targetDirection.normalized;
 
-            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, _targetDirection, _minRangeBetweenTarget);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, _targetDirection, _minRangeBetweenTarget * 2);
 
-            if (hits.Length > 1)
+            bool isCollider = false;
+
+            for (int i = 0; i < hits.Length; i++)
             {
-                bool isCollider = false;
-
-                for (int i = 1; i < hits.Length; i++)
+                if (IsCorrectHit(hits[i]))
                 {
-                    if (hits[i].collider != null && hits[i].collider.isTrigger == false)
-                    {
-                        _moveDirection = new Vector3(hits[i].normal.x, hits[i].normal.y, _zPosition) + _targetDirection.normalized;
+                    _moveDirection += new Vector3(hits[i].normal.x, hits[i].normal.y, 0);
 
-                        isCollider = true;
-                    }
-
-                    if (isCollider)
-                        break;
+                    isCollider = true;
                 }
+
+                if (isCollider)
+                    break;
             }
         }
         else
         {
             _moveDirection = _targetDirection;
         }
+    }
+
+    private bool IsCorrectHit(RaycastHit2D hit)
+    {
+        return hit.transform.GetComponent<Player>() == false && hit.transform.GetComponent<Enemy>() == false && hit.collider != null && hit.collider.isTrigger == false;
     }
 }

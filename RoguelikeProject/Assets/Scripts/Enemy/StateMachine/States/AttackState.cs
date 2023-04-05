@@ -10,15 +10,12 @@ public class AttackState : State
     [SerializeField] private float _delay;
 
     private Animator _animator;
-
     private Coroutine _attackCorutine;
-
     private EnemyStateMachine _machine;
 
     private void Start()
     {
         _animator = GetComponentInChildren<Animator>();
-
         _machine = GetComponent<EnemyStateMachine>();
     }
 
@@ -39,9 +36,7 @@ public class AttackState : State
     private IEnumerator AttackCoroutine()
     {
         _machine.StopTransits();
-
         Attack(Target);
-        Debug.Log("attack");
 
         yield return new WaitForSeconds(_delay);
 
