@@ -1,19 +1,24 @@
 using System.Collections; 
-using System.Collections.Generic;
 using UnityEngine;
 
 
 [RequireComponent(typeof(EnemyStateMachine))]
 public class AttackState : State
 {
-    [SerializeField] private int _damage;
+    [SerializeField] protected int _damage;
     [SerializeField] private float _delay;
 
-    private Animator _animator;
+    protected Animator _animator;
     private Coroutine _attackCorutine;
     private EnemyStateMachine _machine;
 
-    private void Start()
+    protected virtual void Attack(Player target)
+    {
+        _animator.Play("attack");
+        target.ApplyDamage(_damage);
+    }
+
+    protected virtual void Start()
     {
         _animator = GetComponentInChildren<Animator>();
         _machine = GetComponent<EnemyStateMachine>();
@@ -27,15 +32,10 @@ public class AttackState : State
         _attackCorutine = StartCoroutine(AttackCoroutine());
     }
 
-    private void Attack(Player target)
-    {
-        _animator.Play("attack");
-        target.ApplyDamage(_damage);
-    }
-
     private IEnumerator AttackCoroutine()
     {
         _machine.StopTransits();
+
         Attack(Target);
 
         yield return new WaitForSeconds(_delay);

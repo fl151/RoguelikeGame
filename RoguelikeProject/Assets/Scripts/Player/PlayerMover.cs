@@ -63,6 +63,6 @@ public class PlayerMover : MonoBehaviour
 
     private bool IsCorrectHit(RaycastHit2D hit)
     {
-        return hit.transform.GetComponent<Player>() == false && hit.transform.GetComponent<Enemy>() == false && hit.collider != null && hit.collider.isTrigger == false;
+        return hit.transform.gameObject != gameObject && hit.transform.GetComponent<Enemy>() == false && hit.collider != null && hit.collider.isTrigger == false;
     }
 }

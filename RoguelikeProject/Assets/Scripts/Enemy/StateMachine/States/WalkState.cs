@@ -32,7 +32,7 @@ public class WalkState : State
 
                 for (int i = 1; i < hits.Length; i++)
                 {
-                    if (hits[i].transform.GetComponent<Enemy>() == false && hits[i].collider != null && hits[i].collider.isTrigger == false)
+                    if (hits[i].transform.gameObject != gameObject && hits[i].collider != null && hits[i].collider.isTrigger == false)
                     {
                         _moveDirection = new Vector3(hits[i].normal.x, hits[i].normal.y, 0) + _targetDirection.normalized;
 
