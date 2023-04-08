@@ -6,14 +6,13 @@ public class BulletPool : MonoBehaviour
 { 
     private List<Bullet> _pool = new List<Bullet>();
 
-    public void Init(Bullet prefab, int count, int damage, Transform conteiner)
+    public void Init(Bullet prefab, int count, Transform conteiner)
     {
         for (int i = 0; i < count; i++)
         {
             Bullet bullet = Instantiate(prefab, conteiner);
 
             bullet.gameObject.SetActive(false);
-            bullet.SetDamage(damage);
 
             _pool.Add(bullet);
         }

@@ -25,7 +25,7 @@ public class RangeAttackState : AttackState
         base.Start();
 
         _pool = GetComponent<BulletPool>();
-        _pool.Init(_template, _countBullesInPool, _damage, _bulletConteiner);
+        _pool.Init(_template, _countBullesInPool, _bulletConteiner);
     }
 
     private IEnumerator SpawnBulletCoroutine(Player target)
@@ -34,7 +34,7 @@ public class RangeAttackState : AttackState
 
         if(_pool.TryGetBullet(out Bullet bullet))
         {
-            bullet.Init(target, _shootPoint);
+            bullet.Init(target, _shootPoint, _damage);
         }
 
         StopCoroutine(_shootCoroutine);
