@@ -13,23 +13,24 @@ public class SortingLayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject != gameObject)
-        {
+        var tilemapRenderer = collision.GetComponent<TilemapRenderer>();
+
+        if (tilemapRenderer != null)
             for (int i = 0; i < _spriteRenderers.Length; i++)
             {
                 _spriteRenderers[i].sortingOrder = collision.GetComponent<TilemapRenderer>().sortingOrder - 1;
             }
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.GetComponent<Bullet>() == false)
-        {
+        var tilemapRenderer = collision.GetComponent<TilemapRenderer>();
+
+        if (tilemapRenderer != null)
             for (int i = 0; i < _spriteRenderers.Length; i++)
             {
-                _spriteRenderers[i].sortingOrder = collision.GetComponent<TilemapRenderer>().sortingOrder + 1;
+                _spriteRenderers[i].sortingOrder = tilemapRenderer.sortingOrder + 1;
             }
-        }
+
     }
 }

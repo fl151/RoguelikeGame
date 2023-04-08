@@ -2316,7 +2316,7 @@ GameObject:
   - component: {fileID: 102652565}
   - component: {fileID: 102652569}
   - component: {fileID: 102652567}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3265,6 +3265,14 @@ PrefabInstance:
     - target: {fileID: 3171483926963243647, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
       propertyPath: m_Name
       value: Character (49)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171483926963243647, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171483927171205201, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3171483927171205207, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
       propertyPath: m_SortingOrder
