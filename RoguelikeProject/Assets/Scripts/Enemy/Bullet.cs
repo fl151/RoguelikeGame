@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float _speed;
+    [SerializeField] protected float Speed;
 
-    private int _damage;
-    private Player _target;
+    protected Player Target;
+
+    protected int Damage;
 
     public void Init(Player target, GameObject shootPoint, int damage)
     {
         gameObject.SetActive(true);
-        _target = target;
+        Target = target;
 
         SetDamage(damage);
 
@@ -19,12 +20,7 @@ public class Bullet : MonoBehaviour
 
     protected virtual void FlightBehavior()
     {
-        transform.position += (_target.transform.position - transform.position).normalized * _speed * Time.deltaTime;
-    }
-
-    protected virtual void HitAction(Player target)
-    {
-        target.ApplyDamage(_damage);
+        transform.position += (Target.transform.position - transform.position).normalized * Speed * Time.deltaTime;
     }
 
     private void Update()
@@ -34,15 +30,15 @@ public class Bullet : MonoBehaviour
 
     private void SetDamage(int value)
     {
-        if (_damage > 0)
-            _damage = value;
+        if (Damage > 0)
+            Damage = value;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == _target.gameObject)
+        if (collision.gameObject == Target.gameObject)
         {
-            HitAction(_target);
+            Target.ApplyDamage(Damage);
             gameObject.SetActive(false);
         }
     }
