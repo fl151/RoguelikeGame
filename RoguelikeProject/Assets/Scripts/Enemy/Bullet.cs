@@ -21,6 +21,8 @@ public class Bullet : MonoBehaviour
     protected virtual void FlightBehavior()
     {
         transform.position += (Target.transform.position - transform.position).normalized * Speed * Time.deltaTime;
+
+        Debug.Log((Target.transform.position - transform.position).normalized);
     }
 
     private void Update()

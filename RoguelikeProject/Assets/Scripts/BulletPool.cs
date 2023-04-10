@@ -3,14 +3,16 @@ using System.Linq;
 using UnityEngine;
 
 public class BulletPool : MonoBehaviour
-{ 
+{
+    [SerializeField] private Transform _conteiner;
+
     private List<Bullet> _pool = new List<Bullet>();
 
-    public void Init(Bullet prefab, int count, Transform conteiner)
+    public void Init(Bullet prefab, int count)
     {
         for (int i = 0; i < count; i++)
         {
-            Bullet bullet = Instantiate(prefab, conteiner);
+            Bullet bullet = Instantiate(prefab, _conteiner);
 
             bullet.gameObject.SetActive(false);
 

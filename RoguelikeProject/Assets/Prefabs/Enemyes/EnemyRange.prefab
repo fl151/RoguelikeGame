@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3989800745056163799}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0.2, y: 0.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -65,7 +65,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8918925803075811620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.36, y: 0.63507456, z: -0.0002989549}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -147,9 +147,8 @@ MonoBehaviour:
   - {fileID: 8918925803075811630}
   _damage: 5
   _delay: 1
-  _template: {fileID: 4861230445162754709, guid: 67d7045b53268954991b4c6aa0adbbb9, type: 3}
+  _template: {fileID: 8712843888350989755, guid: 31a8ee0502676a64c9e65ba29a592ea4, type: 3}
   _shootPoint: {fileID: 3989800745056163799}
-  _bulletConteiner: {fileID: 0}
 --- !u!114 &8918925803075811630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,3 +224,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad45c4c02b211dc4a8497af72d7af004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _conteiner: {fileID: 0}

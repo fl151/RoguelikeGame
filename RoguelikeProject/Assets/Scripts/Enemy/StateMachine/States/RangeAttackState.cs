@@ -7,7 +7,6 @@ public class RangeAttackState : AttackState
 {
     [SerializeField] private Bullet _template;
     [SerializeField] private GameObject _shootPoint;
-    [SerializeField] private Transform _bulletConteiner;
 
     private const int _countBullesInPool = 10;
     private BulletPool _pool;
@@ -25,7 +24,7 @@ public class RangeAttackState : AttackState
         base.Start();
 
         _pool = GetComponent<BulletPool>();
-        _pool.Init(_template, _countBullesInPool, _bulletConteiner);
+        _pool.Init(_template, _countBullesInPool);
     }
 
     private IEnumerator SpawnBulletCoroutine(Player target)

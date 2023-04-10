@@ -29,6 +29,8 @@ public class VectorMoveBullet : Bullet
             if (collision.gameObject == Target.gameObject)
                 Target.ApplyDamage(Damage);
 
+            Debug.Log(collision);
+
             gameObject.SetActive(false);
         }
     }
