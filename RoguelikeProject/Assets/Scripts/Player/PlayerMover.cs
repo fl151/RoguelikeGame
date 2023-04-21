@@ -25,6 +25,10 @@ public class PlayerMover : MonoBehaviour
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _targetPosition = new Vector3(mousePosition.x, mousePosition.y, 0);
         }
+        else
+        {
+            _targetPosition = transform.position;
+        }
 
         transform.position += _moveDirection * Time.deltaTime * _speed;
     }
