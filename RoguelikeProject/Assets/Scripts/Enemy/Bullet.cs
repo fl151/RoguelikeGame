@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
 
     protected int Damage;
 
-    public void Init(Player target, GameObject shootPoint, int damage)
+    public virtual void Init(Player target, GameObject shootPoint, int damage)
     {
         gameObject.SetActive(true);
         Target = target;
@@ -25,6 +25,20 @@ public class Bullet : MonoBehaviour
         Debug.Log((Target.transform.position - transform.position).normalized);
     }
 
+    protected virtual void HitBehavior(Collider2D collision)
+    {
+        if (collision.gameObject == Target.gameObject)
+        {
+            Target.ApplyDamage(Damage);
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        HitBehavior(collision);
+    }
+
     private void Update()
     {
         FlightBehavior();
@@ -34,14 +48,5 @@ public class Bullet : MonoBehaviour
     {
         if (Damage > 0)
             Damage = value;
-    }
-
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject == Target.gameObject)
-        {
-            Target.ApplyDamage(Damage);
-            gameObject.SetActive(false);
-        }
     }
 }
