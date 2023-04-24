@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions:
   - {fileID: 3105201606312198372}
-  _damage: 5
+  _damage: 2
   _delay: 1.5
   _template: {fileID: 604417207040175320, guid: b229fc17fdb2a124dafff9e47fe91839, type: 3}
   _shootPoint: {fileID: 3105201606693743329}

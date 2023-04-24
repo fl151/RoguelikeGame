@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
         gameObject.SetActive(true);
         Target = target;
 
-        SetDamage(damage);
+        Damage = damage;
 
         transform.position = shootPoint.transform.position;
     }
@@ -42,11 +42,5 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         FlightBehavior();
-    }
-
-    private void SetDamage(int value)
-    {
-        if (Damage > 0)
-            Damage = value;
     }
 }
