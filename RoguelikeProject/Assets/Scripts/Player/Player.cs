@@ -13,8 +13,6 @@ public class Player : MonoBehaviour
 
     public void ApplyDamage(int damage)
     {
-        Debug.Log(_currentHealth);
-
         if (damage > 0)
         {
             _currentHealth -= damage;

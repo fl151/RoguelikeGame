@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6461200722551360538}
   - component: {fileID: 604417207040175320}
   - component: {fileID: -1819824750462516977}
+  - component: {fileID: -3837053603345488383}
   m_Layer: 0
   m_Name: VectorBullet
   m_TagString: Untagged
@@ -137,3 +138,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-3837053603345488383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6353887112025294387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cac9ae79aad089448cbae7e51a75e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
