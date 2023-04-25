@@ -5,10 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(BulletPool))]
 public class RangeAttackState : AttackState
 {
-    [SerializeField] private Bullet _template;
     [SerializeField] private GameObject _shootPoint;
+    [SerializeField] private Bullet _template;
 
-    private const int _countBullesInPool = 10;
+    [SerializeField] private int _countBullesInPool;
+
     private BulletPool _pool;
     private Coroutine _shootCoroutine;
 

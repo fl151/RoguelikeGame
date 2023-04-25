@@ -147,8 +147,9 @@ MonoBehaviour:
   - {fileID: 8918925803075811630}
   _damage: 5
   _delay: 1
-  _template: {fileID: 8712843888350989755, guid: 31a8ee0502676a64c9e65ba29a592ea4, type: 3}
   _shootPoint: {fileID: 3989800745056163799}
+  _template: {fileID: 8712843888350989755, guid: 31a8ee0502676a64c9e65ba29a592ea4, type: 3}
+  _countBullesInPool: 5
 --- !u!114 &8918925803075811630
 MonoBehaviour:
   m_ObjectHideFlags: 0
