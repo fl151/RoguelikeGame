@@ -7,11 +7,11 @@ public class State : MonoBehaviour
 
     protected Player Target { get; private set; }
 
-    public void Enter(Player target)
+    public void Enter()
     {
         if (enabled == false)
         {
-            Target = target;
+            Target = FindObjectOfType<Player>();
             enabled = true;
 
             foreach (var transition in _transitions)

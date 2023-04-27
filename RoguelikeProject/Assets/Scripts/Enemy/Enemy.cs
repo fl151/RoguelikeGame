@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Player _target;
     [SerializeField] private int _maxHealth;
     [SerializeField] private GameObject _prefab;
+    
+    private Player _target;
 
     private int _currentHealth;
 
@@ -24,6 +25,11 @@ public class Enemy : MonoBehaviour
         {
             _currentHealth += heal;
         }
+    }
+
+    public void SetTarget(Player target)
+    {
+        _target = target;
     }
 
     private void TakeDamage(int damage)
