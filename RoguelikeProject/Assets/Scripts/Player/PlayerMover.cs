@@ -13,6 +13,8 @@ public class PlayerMover : MonoBehaviour
     private const float _minRangeBetweenTarget = 0.1f;
     private const int layerIndexBarriers = 3;
 
+    public Vector3 MoveDirection => _moveDirection;
+
     private void Start()
     {
         _targetPosition = transform.position;
