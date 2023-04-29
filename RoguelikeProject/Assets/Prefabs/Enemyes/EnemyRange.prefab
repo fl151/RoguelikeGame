@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3989800745056163798}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 8918925803075811628}
   - component: {fileID: 8918925803075811631}
   - component: {fileID: 8918925803075811665}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8996987e1bba2db48b9e6a1bec998c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
   _maxHealth: 5
   _prefab: {fileID: 8177106075341488768, guid: 0e280cd4ce521994eb618b6731c6a2f4, type: 3}
 --- !u!114 &8918925803075811624
@@ -225,4 +224,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad45c4c02b211dc4a8497af72d7af004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _conteiner: {fileID: 0}

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5519439936371069792}
   - component: {fileID: 5519439936371069793}
   - component: {fileID: 5519439936371069794}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8996987e1bba2db48b9e6a1bec998c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
   _maxHealth: 5
   _prefab: {fileID: 1738588452642519547, guid: 47cb30470248dc842a4ec6b5f17ff913, type: 3}
 --- !u!114 &5519439936371069797
