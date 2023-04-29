@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(SwordPointDirection))]
 public class SwordBehavoir : MonoBehaviour
 {
+    private float _attackDelay;
+
     private const int _enemyLayerIndex = 6;
 
     private Animator _swordAnimator;
@@ -12,7 +13,14 @@ public class SwordBehavoir : MonoBehaviour
     private SwordPointDirection _swordPointDirection;
 
     private bool _isActive = false;
+    private float _timeAfterLastAttack;
 
+    public event UnityAction Attacked;
+
+    public void SetAttackDelay(float delayInSeconds)
+    {
+        _attackDelay = delayInSeconds;
+    }
 
     private void Start()
     {
@@ -20,7 +28,22 @@ public class SwordBehavoir : MonoBehaviour
         _collider = GetComponentInChildren<SwordCollider>();
         _swordPointDirection = GetComponent<SwordPointDirection>();
 
-        MakeInacite();
+        MakeInactive();
+    }
+
+    private void Update()
+    {
+        if (_isActive)
+        {
+            _timeAfterLastAttack += Time.deltaTime;
+
+            if (_timeAfterLastAttack >= _attackDelay)
+            {
+                _timeAfterLastAttack = 0;
+
+                Attack();
+            }
+        }     
     }
 
     private void FixedUpdate()
@@ -33,7 +56,7 @@ public class SwordBehavoir : MonoBehaviour
 
         if(colliders.Length == 0 && _isActive)
         {
-            MakeInacite();
+            MakeInactive();
         }
         else if(colliders.Length != 0 && _isActive == false)
         {
@@ -41,7 +64,7 @@ public class SwordBehavoir : MonoBehaviour
         }
     }
 
-    private void MakeInacite()
+    private void MakeInactive()
     {
         _swordAnimator.Play("Idle");
         _collider.gameObject.SetActive(false);
@@ -50,8 +73,16 @@ public class SwordBehavoir : MonoBehaviour
 
     private void MakeActive()
     {
-        _swordAnimator.Play("SwortAttack");
+        _timeAfterLastAttack = _attackDelay;
+
         _collider.gameObject.SetActive(true);
         _isActive = true;
+    }
+
+    private void Attack()
+    {
+        _swordAnimator.Play("SwortAttack");
+
+        Attacked?.Invoke();
     }
 }

@@ -6,10 +6,12 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     [SerializeField] private int _maxHealth;
-
-    public event UnityAction Died;
+    [SerializeField] private int _damage;
+    [SerializeField] private float _attackDelay;
 
     private int _currentHealth;
+
+    public event UnityAction Died;
 
     public void ApplyDamage(int damage)
     {
@@ -26,6 +28,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         Respawn();
+
+        GetComponentInChildren<SwordBehavoir>().SetAttackDelay(_attackDelay);
     }
 
     private void Die()

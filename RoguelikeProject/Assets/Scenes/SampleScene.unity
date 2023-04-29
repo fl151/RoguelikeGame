@@ -68354,6 +68354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  _damage: 10
+  _attackDelay: 2
 --- !u!4 &1063529843 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3171483926963243644, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
