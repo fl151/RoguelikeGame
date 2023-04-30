@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     {
         Respawn();
 
-        GetComponentInChildren<SwordBehavoir>().SetAttackDelay(_attackDelay);
+        GetComponentInChildren<SwordBehavoir>().SetSettings(_attackDelay, _damage);
     }
 
     private void Die()

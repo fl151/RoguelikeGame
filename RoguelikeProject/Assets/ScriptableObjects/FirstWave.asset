@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e759c63f468f34d894c6082505fed0, type: 3}
   m_Name: FirstWave
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 5519439936371069798, guid: 865901c57bc5e334c922b30fb8a6ea30, type: 3}
+  _prefab: {fileID: 5519439936371069798, guid: cc42267ed58be3d4190050ff4346402a, type: 3}
   _countEnemyes: 5
   _delayBetweenSpawns: 3
   _delayAfterWave: 5

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,27 +6,27 @@ using UnityEngine.Events;
 public class SwordBehavoir : MonoBehaviour
 {
     private float _attackDelay;
+    private int _gamage;
 
     private const int _enemyLayerIndex = 6;
 
     private Animator _swordAnimator;
-    private SwordCollider _collider;
     private SwordPointDirection _swordPointDirection;
 
     private bool _isActive = false;
     private float _timeAfterLastAttack;
 
-    public event UnityAction Attacked;
+    private Collider2D[] _colliders;
 
-    public void SetAttackDelay(float delayInSeconds)
+    public void SetSettings(float delayInSeconds, int damage)
     {
         _attackDelay = delayInSeconds;
+        _gamage = damage;
     }
 
     private void Start()
     {
         _swordAnimator = GetComponentInChildren<Animator>();
-        _collider = GetComponentInChildren<SwordCollider>();
         _swordPointDirection = GetComponent<SwordPointDirection>();
 
         MakeInactive();
@@ -52,13 +53,13 @@ public class SwordBehavoir : MonoBehaviour
         Vector2 size = new Vector2(1.5f, 2);
         float angle = _swordPointDirection.Angle;
 
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(point, size, angle, 1 << _enemyLayerIndex);
+        _colliders = Physics2D.OverlapBoxAll(point, size, angle, 1 << _enemyLayerIndex);
 
-        if(colliders.Length == 0 && _isActive)
+        if(_colliders.Length == 0 && _isActive)
         {
             MakeInactive();
         }
-        else if(colliders.Length != 0 && _isActive == false)
+        else if(_colliders.Length != 0 && _isActive == false)
         {
             MakeActive();
         }
@@ -67,7 +68,6 @@ public class SwordBehavoir : MonoBehaviour
     private void MakeInactive()
     {
         _swordAnimator.Play("Idle");
-        _collider.gameObject.SetActive(false);
         _isActive = false;
     }
 
@@ -75,7 +75,6 @@ public class SwordBehavoir : MonoBehaviour
     {
         _timeAfterLastAttack = _attackDelay;
 
-        _collider.gameObject.SetActive(true);
         _isActive = true;
     }
 
@@ -83,6 +82,21 @@ public class SwordBehavoir : MonoBehaviour
     {
         _swordAnimator.Play("SwortAttack");
 
-        Attacked?.Invoke();
+        if (_colliders.Length == 0)
+            return;
+        else
+        {
+            StartCoroutine(AttackAfterDeley(0.2f));
+        }
+    }
+
+    private IEnumerator AttackAfterDeley(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        foreach (var collider in _colliders)
+        {
+            collider.GetComponent<Enemy>().TryApplyDamage(_gamage);
+        }
     }
 }

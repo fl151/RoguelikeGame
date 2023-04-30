@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Enemy : MonoBehaviour
     private Player _target;
 
     private int _currentHealth;
+
+    public event UnityAction Damaged;
 
     public bool IsDied { get; private set; }
     public Player Target => _target;
@@ -37,6 +40,7 @@ public class Enemy : MonoBehaviour
         if (damage > 0)
         {
             _currentHealth -= damage;
+            Damaged?.Invoke();
         }
     }
 
@@ -56,6 +60,7 @@ public class Enemy : MonoBehaviour
         if(_currentHealth <= 0)
         {
             IsDied = true;
+            Destroy(gameObject);
         }
     }
 }
