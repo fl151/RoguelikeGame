@@ -24,4 +24,12 @@ public class BulletPool : MonoBehaviour
 
         return bullet != null;
     }
+
+    public void DestroyPool()
+    {
+        for (int i = 0; i < _pool.Count; i++)
+        {
+            Destroy(_pool[i].gameObject);
+        }
+    }
 }

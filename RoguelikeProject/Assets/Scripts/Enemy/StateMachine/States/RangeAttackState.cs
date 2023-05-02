@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BulletPool))]
+[RequireComponent(typeof(BulletPool), typeof(Enemy))]
 public class RangeAttackState : AttackState
 {
     [SerializeField] private GameObject _shootPoint;
@@ -25,6 +25,7 @@ public class RangeAttackState : AttackState
         base.Start();
 
         _pool = GetComponent<BulletPool>();
+        GetComponent<Enemy>().Dead += DestroyPool;
         _pool.Init(_template, _countBullesInPool);
     }
 
@@ -38,5 +39,10 @@ public class RangeAttackState : AttackState
         }
 
         StopCoroutine(_shootCoroutine);
+    }
+
+    private void DestroyPool()
+    {
+        _pool.DestroyPool();
     }
 }

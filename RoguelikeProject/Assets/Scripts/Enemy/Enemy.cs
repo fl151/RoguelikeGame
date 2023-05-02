@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 
     public event UnityAction Damaged;
 
-    public bool IsDied { get; private set; }
+    public event UnityAction Dead;
     public Player Target => _target;
 
     public void TryApplyDamage(int damage)
@@ -52,14 +52,14 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         _currentHealth = _maxHealth;
-        IsDied = false;
     }
 
     private void TryDie()
     {
         if(_currentHealth <= 0)
         {
-            IsDied = true;
+            Dead?.Invoke();
+
             Destroy(gameObject);
         }
     }
