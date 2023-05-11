@@ -8,12 +8,20 @@ public class AOEAttackState : State
     [SerializeField] private Bullet _template;
     [SerializeField] private int _countBulletsInPool;
 
+    [SerializeField] private BossAttackType[] _attackTypes;
+
     private BulletPool _pool;
 
     private void Start()
     {
         InitPool();
     }
+
+    private void OnEnable()
+    {
+        
+    }
+
 
     private void InitPool()
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class VectorMoveBullet : Bullet
 {
-    private const int barriersLayerIndex = 3;
+    private const int _barriersLayerIndex = 3;
 
     private Vector3 _moveDirection;
 
@@ -21,7 +21,7 @@ public class VectorMoveBullet : Bullet
 
     protected override void HitBehavior(Collider2D collision)
     {
-        if (collision.gameObject.layer == barriersLayerIndex)
+        if (collision.gameObject.layer == _barriersLayerIndex)
         {
             gameObject.SetActive(false);
 
