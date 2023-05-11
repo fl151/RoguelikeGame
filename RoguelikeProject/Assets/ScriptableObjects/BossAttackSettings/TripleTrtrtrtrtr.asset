@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TripleTrtrtrtrtr
   m_EditorClassIdentifier: 
   _countBullets: 3
+  _times: 24
   _angleChange: 5
-  _delay: 0.2
+  _delay: 0.4
   _delayAfter: 3

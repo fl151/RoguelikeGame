@@ -6,6 +6,7 @@ using UnityEngine;
 public class BossAttackType : ScriptableObject
 {
     [SerializeField] private int _countBullets;
+    [SerializeField] private int _times;
     [SerializeField] private float _angleChange;
     [SerializeField] private float _delay;
     [SerializeField] private float _delayAfter;
@@ -14,4 +15,5 @@ public class BossAttackType : ScriptableObject
     public float Angle => _angleChange;
     public float Delay => _delay;
     public float DelayAfter => _delayAfter;
+    public int Times => _times;
 }

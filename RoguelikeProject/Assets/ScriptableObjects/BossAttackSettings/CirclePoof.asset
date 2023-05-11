@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CirclePoof
   m_EditorClassIdentifier: 
   _countBullets: 10
+  _times: 5
   _angleChange: 0
   _delay: 3
   _delayAfter: 3
