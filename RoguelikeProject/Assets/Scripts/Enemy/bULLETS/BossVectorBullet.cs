@@ -8,12 +8,13 @@ public class BossVectorBullet : Bullet
 
     private Vector3 _direction;
 
-    public void Init(Vector3 direction, int damage, GameObject shootPoint)
+    public void Init(Player target, Vector3 direction, int damage, GameObject shootPoint)
     {
         gameObject.SetActive(true);
 
         Damage = damage;
         _direction = direction;
+        Target = target;
 
         transform.position = shootPoint.transform.position;
     }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class AOEAttackState : State
 {
     [SerializeField] private Bullet _template;
+    [SerializeField] private int _damage;
     [SerializeField] private int _countBulletsInPool;
 
     [SerializeField] private BossAttackType[] _attackTypes;
@@ -17,18 +18,16 @@ public class AOEAttackState : State
     private void Start()
     {
         InitPool();
-    }
-
-    private void OnEnable()
-    {
-        if (_processCoroutine != null)
-        {
-            StopCoroutine(_processCoroutine);         
-        }
 
         _processCoroutine = StartCoroutine(Process());
     }
 
+    private void OnDisable()
+    {
+        StopCoroutine(_processCoroutine);
+
+        _processCoroutine = null;
+    }
     private IEnumerator Process()
     {
         while (true)
@@ -40,7 +39,7 @@ public class AOEAttackState : State
 
                 for(int j = 0; j < type.Times; j++)
                 {
-                    Attack(type);
+                    Attack(type.Count, type.Angle, j);
 
                     yield return delay;
                 }
@@ -50,9 +49,34 @@ public class AOEAttackState : State
         }
     }
 
-    private void Attack(BossAttackType type)
+    private void Attack(int countBullets, float angleChangeByTime, int time)
     {
+        float angleBetweenBullets = 360 / countBullets;
 
+        for(int i = 0; i < countBullets; ++i)
+        {
+            float angle = angleBetweenBullets * i + angleChangeByTime * time;
+
+            if (_pool.TryGetBullet(out Bullet bullet))
+            {
+                var bulletCurrentType = bullet as BossVectorBullet;
+
+                bulletCurrentType.Init(Target, GetDirection(angle), _damage, transform.gameObject);
+            }  
+        }
+    }
+
+    private Vector3 GetDirection(float angle)
+    {
+        var directionX = new Vector3(Mathf.Cos(GetAngleInRad(angle)), 0, 0);
+        var directionY = new Vector3(0, Mathf.Sin(GetAngleInRad(angle)), 0);
+
+        return directionX + directionY;
+    }
+
+    private float GetAngleInRad(float angleInDegrees)
+    {
+        return angleInDegrees * Mathf.PI / 180;
     }
 
     private void InitPool()

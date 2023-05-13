@@ -34,7 +34,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8423735472724693139}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.58, y: -4.17, z: -0.0029531121}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -156,6 +156,7 @@ MonoBehaviour:
   _transitions:
   - {fileID: 6583442466216875536}
   _template: {fileID: 7583376318482173785, guid: 3816ae0b9c646ac4d84b71251d32fe80, type: 3}
+  _damage: 10
   _countBulletsInPool: 30
   _attackTypes:
   - {fileID: 11400000, guid: acde31ea3c8fae443a5b020631755af3, type: 2}
