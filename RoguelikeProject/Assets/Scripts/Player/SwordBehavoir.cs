@@ -50,7 +50,7 @@ public class SwordBehavoir : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 point = (Vector2)transform.position + _swordPointDirection.Direction.normalized * 0.8f;
-        Vector2 size = new Vector2(1.5f, 2);
+        Vector2 size = new Vector2(2f, 3);
         float angle = _swordPointDirection.Angle;
 
         _colliders = Physics2D.OverlapBoxAll(point, size, angle, 1 << _enemyLayerIndex);

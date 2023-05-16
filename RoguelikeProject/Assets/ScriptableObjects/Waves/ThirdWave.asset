@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e759c63f468f34d894c6082505fed0, type: 3}
   m_Name: ThirdWave
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 8918925803075811627, guid: 432693e0a7ee0fd4897f3e4d89c8d60c, type: 3}
   _countEnemyes: 3
   _delayBetweenSpawns: 5
   _delayAfterWave: 10

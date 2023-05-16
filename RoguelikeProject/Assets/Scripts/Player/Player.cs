@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     private int _currentHealth;
 
     public event UnityAction Died;
+    public event UnityAction<int> HealthChanged;
+
+    public int MaxHealth => _maxHealth;
 
     public void ApplyDamage(int damage)
     {
@@ -19,6 +22,7 @@ public class Player : MonoBehaviour
         {
             _currentHealth -= damage;
 
+            HealthChanged?.Invoke(_currentHealth);
 
             if (_currentHealth <= 0)
                 Die();
@@ -43,5 +47,6 @@ public class Player : MonoBehaviour
     {
         gameObject.SetActive(true);
         _currentHealth = _maxHealth;
+        HealthChanged?.Invoke(_currentHealth);
     }
 }

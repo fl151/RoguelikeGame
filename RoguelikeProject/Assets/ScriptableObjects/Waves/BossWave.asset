@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e759c63f468f34d894c6082505fed0, type: 3}
   m_Name: BossWave
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 8423735472724693230, guid: a84a129310df42e42a12c3ff13fe8618, type: 3}
   _countEnemyes: 1
   _delayBetweenSpawns: 0
   _delayAfterWave: 0
