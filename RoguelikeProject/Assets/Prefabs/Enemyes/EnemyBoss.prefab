@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7149338580354355948}
   - component: {fileID: 6583442466216875536}
   - component: {fileID: 9035316629690465071}
+  - component: {fileID: 1442504387427473075}
   m_Layer: 6
   m_Name: EnemyBoss
   m_TagString: Untagged
@@ -55,6 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 1000
   _prefab: {fileID: 7662405201504118149, guid: 12baf7f799fa7f645b9311d6db0ff480, type: 3}
+  _deathEffect: {fileID: -4595474432412529691, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
 --- !u!114 &6771798249678505875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,3 +190,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitions: []
+--- !u!114 &1442504387427473075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8423735472724693139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa5c071b2e74cd64db461ca76a0001f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scale: 0.8

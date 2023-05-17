@@ -90,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 250
   _prefab: {fileID: 8177106075341488768, guid: 0e280cd4ce521994eb618b6731c6a2f4, type: 3}
+  _deathEffect: {fileID: -4595474432412529691, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
 --- !u!114 &8918925803075811624
 MonoBehaviour:
   m_ObjectHideFlags: 0

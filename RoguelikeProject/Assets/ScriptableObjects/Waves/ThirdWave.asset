@@ -15,5 +15,5 @@ MonoBehaviour:
   _prefab: {fileID: 8918925803075811627, guid: 432693e0a7ee0fd4897f3e4d89c8d60c, type: 3}
   _countEnemyes: 3
   _delayBetweenSpawns: 5
-  _delayAfterWave: 10
+  _delayAfterWave: 15
   _spawnPointsIndexes: 0000000001000000
