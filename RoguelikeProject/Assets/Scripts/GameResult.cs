@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameResult : MonoBehaviour
@@ -25,6 +26,13 @@ public class GameResult : MonoBehaviour
 
     private void OnBossDied()
     {
+        StartCoroutine(ShowWinCanvasAfterDelay(1.5f));
+    }
+
+    private IEnumerator ShowWinCanvasAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
         Time.timeScale = 0;
         _winCanvas.gameObject.SetActive(true);
     }
