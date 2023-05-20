@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FirstWave
   m_EditorClassIdentifier: 
   _prefab: {fileID: 5519439936371069798, guid: cc42267ed58be3d4190050ff4346402a, type: 3}
-  _countEnemyes: 5
-  _delayBetweenSpawns: 3
+  _countEnemyes: 10
+  _delayBetweenSpawns: 1.5
   _delayAfterWave: 5
   _spawnPointsIndexes: 0000000001000000

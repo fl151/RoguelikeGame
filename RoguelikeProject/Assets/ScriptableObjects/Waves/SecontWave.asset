@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SecontWave
   m_EditorClassIdentifier: 
   _prefab: {fileID: 3105201606312198377, guid: 0df01f10f3a93f5458cd5abc04d94359, type: 3}
-  _countEnemyes: 5
+  _countEnemyes: 7
   _delayBetweenSpawns: 2
   _delayAfterWave: 5
   _spawnPointsIndexes: 00000000
