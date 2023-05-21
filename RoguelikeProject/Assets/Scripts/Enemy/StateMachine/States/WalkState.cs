@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WalkState : State
 {
     [SerializeField] private float _speed;
 
+    private const float _MinRangeBetweenTarget = 0.1f;
+    private const int _LayerIndexBarriers = 3;
+
     private Vector3 _targetDirection;
     private Vector3 _moveDirection;
-
-    private const float _minRangeBetweenTarget = 0.1f;
-    private const int layerIndexBarriers = 3;
 
     private void Update()
     {
@@ -21,11 +19,11 @@ public class WalkState : State
     {
         _targetDirection = Target.transform.position - transform.position;
 
-        if (_targetDirection.magnitude > _minRangeBetweenTarget)
+        if (_targetDirection.magnitude > _MinRangeBetweenTarget)
         {
             _moveDirection = _targetDirection.normalized;
 
-            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, _targetDirection, _minRangeBetweenTarget * 2, 1 << layerIndexBarriers);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, _targetDirection, _MinRangeBetweenTarget * 2, 1 << _LayerIndexBarriers);
 
             bool isCollider = false;
 

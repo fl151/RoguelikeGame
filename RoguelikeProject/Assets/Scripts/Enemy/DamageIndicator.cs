@@ -1,15 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Enemy))]
 public class DamageIndicator : MonoBehaviour
 {
+    private WaitForSeconds _IndicateTime = new WaitForSeconds(0.2f);
+
     private Enemy _enemy;
+    private SpriteRenderer[] _spriteRenderers;
 
     private void Start()
     {
         _enemy = GetComponent<Enemy>();
+        _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         _enemy.Damaged += Indicate;
     }
 
@@ -20,16 +23,14 @@ public class DamageIndicator : MonoBehaviour
 
     private IEnumerator ChangeColor()
     {
-        var spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-
-        foreach (var spriteRenderer in spriteRenderers)
+        foreach (var spriteRenderer in _spriteRenderers)
         {
             spriteRenderer.color = Color.red;
         }
 
-        yield return new WaitForSeconds(0.1f);
+        yield return _IndicateTime;
 
-        foreach (var spriteRenderer in spriteRenderers)
+        foreach (var spriteRenderer in _spriteRenderers)
         {
             spriteRenderer.color = Color.white;
         }

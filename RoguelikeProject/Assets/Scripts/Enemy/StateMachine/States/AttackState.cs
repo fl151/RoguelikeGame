@@ -1,7 +1,6 @@
 using System.Collections; 
 using UnityEngine;
 
-
 [RequireComponent(typeof(EnemyStateMachine))]
 public class AttackState : State
 {

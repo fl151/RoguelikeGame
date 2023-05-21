@@ -11,9 +11,7 @@ public class BulletPool : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             Bullet bullet = Instantiate(prefab);
-
             bullet.gameObject.SetActive(false);
-
             _pool.Add(bullet);
         }
     }

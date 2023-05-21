@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class DeathAnimation : MonoBehaviour
 {
-    private float _playTime;
+    private const float _AnimationTime = 1;
 
+    private float _playTime;
     private float _currentTime;
 
     public void SetPosition(Vector3 position)
@@ -13,7 +14,7 @@ public class DeathAnimation : MonoBehaviour
 
     private void Start()
     {
-        _playTime = 1;
+        _playTime = _AnimationTime;
     }
 
     private void Update()

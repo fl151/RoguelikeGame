@@ -5,8 +5,9 @@ public class GameResult : MonoBehaviour
 {
     [SerializeField] private Canvas _winCanvas;
     [SerializeField] private Canvas _lossCanvas;
-
     [SerializeField] private Player _player;
+
+    private const float _DelayAfterBossDied = 1.5f;
 
     public void SetBoss(Boss boss)
     {
@@ -26,7 +27,7 @@ public class GameResult : MonoBehaviour
 
     private void OnBossDied()
     {
-        StartCoroutine(ShowWinCanvasAfterDelay(1.5f));
+        StartCoroutine(ShowWinCanvasAfterDelay(_DelayAfterBossDied));
     }
 
     private IEnumerator ShowWinCanvasAfterDelay(float delay)

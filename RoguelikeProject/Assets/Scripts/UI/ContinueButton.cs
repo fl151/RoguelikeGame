@@ -6,7 +6,6 @@ public class ContinueButton : DefaultButton
 
     protected override void OnButtonClick()
     {
-        Debug.Log("");
         _pauseCanvas.gameObject.SetActive(false);
         Time.timeScale = 1;
     }

@@ -5,7 +5,6 @@ public class Bullet : MonoBehaviour
     [SerializeField] protected float Speed;
 
     protected Player Target;
-
     protected int Damage;
 
     public virtual void Init(Player target, GameObject shootPoint, int damage)

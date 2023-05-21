@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Spawner))]
 public class WaveChanger : MonoBehaviour
@@ -11,29 +10,18 @@ public class WaveChanger : MonoBehaviour
 
     private int _currentIndexWave;
 
-    private UnityAction _waveFinished;
-
     private void Start()
     {
         _spawner = GetComponent<Spawner>();
         _currentIndexWave = -1;
 
-        _waveFinished += TryStartNextWave;
-
         TryStartNextWave();
-    }
-
-    private void OnDisable()
-    {
-        _waveFinished -= TryStartNextWave;
     }
 
     private void TryStartNextWave()
     {
-        if(_currentIndexWave + 1 < _waves.Length)
+        if(++_currentIndexWave < _waves.Length)
         {
-            _currentIndexWave++;
-
             InitWave(_waves[_currentIndexWave]);
         }
     }
@@ -56,6 +44,6 @@ public class WaveChanger : MonoBehaviour
 
         yield return new WaitForSeconds(wave.DelayAfter);
 
-        _waveFinished.Invoke();
+        TryStartNextWave();
     }
 }

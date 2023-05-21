@@ -1,15 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SwordPointDirection : MonoBehaviour
 {
     private PlayerMover _playerMover;
-
     private float _angle;
 
     public float Angle => _angle;
-
     public Vector2 Direction { get; private set; }
 
     private void Start()

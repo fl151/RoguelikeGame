@@ -5,7 +5,6 @@ using UnityEngine.Events;
 public class Boss : MonoBehaviour
 {
     private Enemy _enemy;
-
     private GameResult _gameResult;
 
     public event UnityAction Dead;

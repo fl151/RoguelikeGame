@@ -9,7 +9,6 @@ public class Spawner : MonoBehaviour
     public void SpawnEnemy(Enemy prefab)
     {
         int indexSpawnPoint = Random.Range(0, _spawnPoints.Length);
-
         Enemy enemy = Instantiate(prefab, _spawnPoints[indexSpawnPoint].transform);
 
         enemy.SetTarget(_target);
@@ -20,7 +19,6 @@ public class Spawner : MonoBehaviour
         if (_spawnPoints.Length > indexSpawnPoint && 0 <= indexSpawnPoint)
         {
             Enemy enemy = Instantiate(prefab, _spawnPoints[indexSpawnPoint].transform);
-
             enemy.SetTarget(_target);
 
             if (_spawnPoints[indexSpawnPoint] == null)

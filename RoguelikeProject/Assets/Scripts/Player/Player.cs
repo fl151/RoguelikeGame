@@ -7,10 +7,10 @@ public class Player : MonoBehaviour
     [SerializeField] private int _damage;
     [SerializeField] private float _attackDelay;
 
-    private int _currentHealth;
-
     public event UnityAction Died;
     public event UnityAction<int> HealthChanged;
+
+    private int _currentHealth;
 
     public int MaxHealth => _maxHealth;
 
@@ -30,14 +30,12 @@ public class Player : MonoBehaviour
     private void Start()
     {
         Respawn();
-
         GetComponentInChildren<SwordBehavoir>().SetSettings(_attackDelay, _damage);
     }
 
     private void Die()
     {
         Died?.Invoke();
-
         gameObject.SetActive(false);
     }
 

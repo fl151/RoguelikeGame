@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class DefaultButton : MonoBehaviour
+public abstract class DefaultButton : MonoBehaviour
 {
     private Button _button;
 
@@ -17,7 +17,5 @@ public class DefaultButton : MonoBehaviour
         _button.onClick.RemoveListener(OnButtonClick);
     }
 
-    protected virtual void OnButtonClick()
-    {
-    }
+    protected abstract void OnButtonClick();
 }

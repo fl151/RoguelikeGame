@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Enemy), typeof(BulletPool))]
@@ -28,6 +27,7 @@ public class AOEAttackState : State
 
         _processCoroutine = null;
     }
+
     private IEnumerator Process()
     {
         while (true)
@@ -59,9 +59,9 @@ public class AOEAttackState : State
 
             if (_pool.TryGetBullet(out Bullet bullet))
             {
-                var bulletCurrentType = bullet as BossVectorBullet;
+                var bossBullet = bullet as BossVectorBullet;
 
-                bulletCurrentType.Init(Target, GetDirection(angle), _damage, transform.gameObject);
+                bossBullet.Init(Target, GetDirection(angle), _damage, transform.gameObject);
             }  
         }
     }

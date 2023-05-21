@@ -8,14 +8,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private DeathAnimation _deathEffect;
     
     private Player _target;
-
     private int _currentHealth;
 
     public event UnityAction Damaged;
-
     public event UnityAction Dead;
-    public Player Target => _target;
 
+    public Player Target => _target;
     public DeathAnimation DeathEffect => _deathEffect;
 
     public void TryApplyDamage(int damage)

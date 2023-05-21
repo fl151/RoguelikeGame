@@ -8,8 +8,6 @@ public class EnemyStateMachine : MonoBehaviour
     private State _currentState;
     private bool _canTransit = true;
 
-    public State Current => _currentState;
-
     public void StopTransits()
     {
         _canTransit = false;
@@ -30,7 +28,7 @@ public class EnemyStateMachine : MonoBehaviour
         if (_currentState == null || _canTransit == false)
             return;
 
-        var nextState = _currentState.GetNextState();
+        State nextState = _currentState.GetNextState();
 
         if (nextState != null)
             Transit(nextState);
