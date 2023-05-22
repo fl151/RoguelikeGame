@@ -7,38 +7,13 @@ public class Spawner : MonoBehaviour
     
     [SerializeField] private SpawnPoint[] _spawnPoints;
 
-    public void SpawnEnemy(Enemy prefab)
-    {
-        int indexSpawnPoint = Random.Range(0, _spawnPoints.Length);
-
-        InitEnemy(prefab, indexSpawnPoint);
-    }
-
-    public void SpawnEnemy(Enemy prefab, int indexSpawnPoint)
-    {
-        if (_spawnPoints.Length > indexSpawnPoint && 0 <= indexSpawnPoint)
-        {
-            InitEnemy(prefab, indexSpawnPoint);
-
-            if (_spawnPoints[indexSpawnPoint] == null)
-                Debug.LogWarning("точки спавна с таким индексом не существует");
-        }
-        else
-        {
-            Debug.LogError("Неверный индекс точки спавна!");
-        }
-    }
-
     public void SpawnEnemy(Enemy prefab, int[] indexesSpawnPoints)
     {
         int indexSpawnPoint;
 
-        if (indexesSpawnPoints.Length == 1)
-            indexSpawnPoint = indexesSpawnPoints[0];
-        else
-            indexSpawnPoint = Random.Range(0, indexesSpawnPoints.Length);
+        indexSpawnPoint = Random.Range(0, indexesSpawnPoints.Length);
 
-        InitEnemy(prefab, indexSpawnPoint);
+        InitEnemy(prefab, indexesSpawnPoints[indexSpawnPoint]);
     }
 
     private void InitEnemy(Enemy prefab, int indexSpawnPoint)
