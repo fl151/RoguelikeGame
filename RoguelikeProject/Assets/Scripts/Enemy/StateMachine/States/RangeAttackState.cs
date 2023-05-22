@@ -14,7 +14,7 @@ public class RangeAttackState : AttackState
 
     protected override void Attack(Player target)
     {
-        _animator.Play("attack");
+        _animator.Play(_AttackAnimationTitle);
         _shootCoroutine = StartCoroutine(SpawnBulletCoroutine(target));
     }
 

@@ -11,7 +11,8 @@ public class State : MonoBehaviour
     {
         if (enabled == false)
         {
-            Target = FindObjectOfType<Player>();
+            Target = GetComponent<EnemyStateMachine>().Target;
+
             enabled = true;
 
             foreach (var transition in _transitions)

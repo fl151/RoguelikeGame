@@ -3,23 +3,22 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private Player _target;
+    [SerializeField] private GameResult _gameResult;
     
-    private SpawnPoint[] _spawnPoints;
+    [SerializeField] private SpawnPoint[] _spawnPoints;
 
     public void SpawnEnemy(Enemy prefab)
     {
         int indexSpawnPoint = Random.Range(0, _spawnPoints.Length);
-        Enemy enemy = Instantiate(prefab, _spawnPoints[indexSpawnPoint].transform);
 
-        enemy.SetTarget(_target);
+        InitEnemy(prefab, indexSpawnPoint);
     }
 
     public void SpawnEnemy(Enemy prefab, int indexSpawnPoint)
     {
         if (_spawnPoints.Length > indexSpawnPoint && 0 <= indexSpawnPoint)
         {
-            Enemy enemy = Instantiate(prefab, _spawnPoints[indexSpawnPoint].transform);
-            enemy.SetTarget(_target);
+            InitEnemy(prefab, indexSpawnPoint);
 
             if (_spawnPoints[indexSpawnPoint] == null)
                 Debug.LogWarning("точки спавна с таким индексом не существует");
@@ -32,15 +31,25 @@ public class Spawner : MonoBehaviour
 
     public void SpawnEnemy(Enemy prefab, int[] indexesSpawnPoints)
     {
-        int indexSpawnPoint = Random.Range(0, indexesSpawnPoints.Length);
+        int indexSpawnPoint;
 
-        prefab.SetTarget(_target);
+        if (indexesSpawnPoints.Length == 1)
+            indexSpawnPoint = indexesSpawnPoints[0];
+        else
+            indexSpawnPoint = Random.Range(0, indexesSpawnPoints.Length);
 
-        Instantiate(prefab, _spawnPoints[indexesSpawnPoints[indexSpawnPoint]].transform);    
+        InitEnemy(prefab, indexSpawnPoint);
     }
 
-    private void Start()
+    private void InitEnemy(Enemy prefab, int indexSpawnPoint)
     {
-        _spawnPoints = GetComponentsInChildren<SpawnPoint>();
+        var enemy = Instantiate(prefab, _spawnPoints[indexSpawnPoint].transform);
+
+        enemy.SetTarget(_target);
+
+        if (enemy.TryGetComponent(out Boss boss))
+        {
+            _gameResult.SetBoss(boss);
+        }
     }
 }

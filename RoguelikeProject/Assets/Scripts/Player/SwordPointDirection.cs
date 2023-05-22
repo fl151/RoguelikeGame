@@ -10,7 +10,7 @@ public class SwordPointDirection : MonoBehaviour
 
     private void Start()
     {
-        _playerMover = FindObjectOfType<PlayerMover>();
+        _playerMover = GetComponentInParent<PlayerMover>();
     }
 
     private void Update()

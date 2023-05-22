@@ -1541,6 +1541,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 1063529841}
+  _gameResult: {fileID: 1044473677}
+  _spawnPoints:
+  - {fileID: 1499868898}
+  - {fileID: 411702816}
+  - {fileID: 628670235}
 --- !u!114 &859875689
 MonoBehaviour:
   m_ObjectHideFlags: 0

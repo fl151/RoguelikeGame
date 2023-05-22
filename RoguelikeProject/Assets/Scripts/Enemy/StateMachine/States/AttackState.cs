@@ -7,13 +7,15 @@ public class AttackState : State
     [SerializeField] protected int _damage;
     [SerializeField] private float _delay;
 
+    protected const string _AttackAnimationTitle = "attack";
+
     protected Animator _animator;
     private Coroutine _attackCorutine;
     private EnemyStateMachine _machine;
 
     protected virtual void Attack(Player target)
     {
-        _animator.Play("attack");
+        _animator.Play(_AttackAnimationTitle);
         target.ApplyDamage(_damage);
     }
 

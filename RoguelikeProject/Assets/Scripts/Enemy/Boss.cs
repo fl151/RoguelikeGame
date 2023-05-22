@@ -5,7 +5,6 @@ using UnityEngine.Events;
 public class Boss : MonoBehaviour
 {
     private Enemy _enemy;
-    private GameResult _gameResult;
 
     public event UnityAction Dead;
 
@@ -13,9 +12,6 @@ public class Boss : MonoBehaviour
     {
         _enemy = GetComponent<Enemy>();
         _enemy.Dead += OnDead;
-
-        _gameResult = FindObjectOfType<GameResult>();
-        _gameResult.SetBoss(this);
     }
 
     private void OnDead()
