@@ -13,16 +13,16 @@ public class AttackState : State
     private Coroutine _attackCorutine;
     private EnemyStateMachine _machine;
 
-    protected virtual void Attack(Player target)
-    {
-        _animator.Play(_AttackAnimationTitle);
-        target.ApplyDamage(_damage);
-    }
-
     protected virtual void Start()
     {
         _animator = GetComponentInChildren<Animator>();
         _machine = GetComponent<EnemyStateMachine>();
+    }
+
+    protected virtual void Attack(Player target)
+    {
+        _animator.Play(_AttackAnimationTitle);
+        target.ApplyDamage(_damage);
     }
 
     private void Update()

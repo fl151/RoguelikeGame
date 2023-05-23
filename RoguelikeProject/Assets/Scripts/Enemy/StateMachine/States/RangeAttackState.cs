@@ -12,12 +12,6 @@ public class RangeAttackState : AttackState
     private BulletPool _pool;
     private Coroutine _shootCoroutine;
 
-    protected override void Attack(Player target)
-    {
-        _animator.Play(_AttackAnimationTitle);
-        _shootCoroutine = StartCoroutine(SpawnBulletCoroutine(target));
-    }
-
     protected override void Start()
     {
         base.Start();
@@ -25,6 +19,12 @@ public class RangeAttackState : AttackState
         _pool = GetComponent<BulletPool>();
         GetComponent<Enemy>().Dead += DestroyPool;
         _pool.Init(_template, _countBullesInPool);
+    }
+
+    protected override void Attack(Player target)
+    {
+        _animator.Play(_AttackAnimationTitle);
+        _shootCoroutine = StartCoroutine(SpawnBulletCoroutine(target));
     }
 
     private IEnumerator SpawnBulletCoroutine(Player target)

@@ -8,10 +8,16 @@ public class Boss : MonoBehaviour
 
     public event UnityAction Dead;
 
-    private void Start()
+
+    private void OnEnable()
     {
         _enemy = GetComponent<Enemy>();
         _enemy.Dead += OnDead;
+    }
+
+    private void OnDisable()
+    {
+        _enemy.Dead -= OnDead;
     }
 
     private void OnDead()
