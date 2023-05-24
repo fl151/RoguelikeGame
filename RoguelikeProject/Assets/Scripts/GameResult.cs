@@ -9,15 +9,15 @@ public class GameResult : MonoBehaviour
 
     private const float _DelayAfterBossDied = 1.5f;
 
-    public void SetBoss(Boss boss)
-    {
-        boss.Dead += OnBossDied;
-    }   
-
     private void Start()
     {
         _player.Died += OnPlayerDied;
     }
+
+    public void SetBoss(Boss boss)
+    {
+        boss.Dead += OnBossDied;
+    }   
 
     private void OnPlayerDied()
     {

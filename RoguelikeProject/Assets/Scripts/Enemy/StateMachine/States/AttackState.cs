@@ -19,18 +19,18 @@ public class AttackState : State
         _machine = GetComponent<EnemyStateMachine>();
     }
 
-    protected virtual void Attack(Player target)
-    {
-        _animator.Play(_AttackAnimationTitle);
-        target.ApplyDamage(_damage);
-    }
-
     private void Update()
     {
         if (_attackCorutine != null)
             return;
 
         _attackCorutine = StartCoroutine(AttackCoroutine());
+    }
+
+    protected virtual void Attack(Player target)
+    {
+        _animator.Play(_AttackAnimationTitle);
+        target.ApplyDamage(_damage);
     }
 
     private IEnumerator AttackCoroutine()

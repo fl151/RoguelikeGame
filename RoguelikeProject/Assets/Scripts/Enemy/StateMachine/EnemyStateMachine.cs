@@ -10,16 +10,6 @@ public class EnemyStateMachine : MonoBehaviour
 
     public Player Target { get; private set; }
 
-    public void StopTransits()
-    {
-        _canTransit = false;
-    }
-
-    public void StartTransits()
-    {
-        _canTransit = true;
-    }
-
     private void Start()
     {
         Target = GetComponent<Enemy>().Target;
@@ -36,6 +26,16 @@ public class EnemyStateMachine : MonoBehaviour
 
         if (nextState != null)
             Transit(nextState);
+    }
+
+    public void StopTransits()
+    {
+        _canTransit = false;
+    }
+
+    public void StartTransits()
+    {
+        _canTransit = true;
     }
 
     private void Reset(State startState)

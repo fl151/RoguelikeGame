@@ -4,10 +4,12 @@ using UnityEngine;
 [RequireComponent(typeof(SwordPointDirection))]
 public class SwordBehavoir : MonoBehaviour
 {
+    private const int EnemyLayerIndex = 6;
+    private const string IdleTitle = "Idle";
+    private const string SwordAttackTitle = "SwortAttack";
+
     private float _attackDelay;
     private int _gamage;
-
-    private const int _enemyLayerIndex = 6;
 
     private Animator _swordAnimator;
     private SwordPointDirection _swordPointDirection;
@@ -16,12 +18,6 @@ public class SwordBehavoir : MonoBehaviour
     private float _timeAfterLastAttack;
 
     private Collider2D[] _colliders;
-
-    public void SetSettings(float delayInSeconds, int damage)
-    {
-        _attackDelay = delayInSeconds;
-        _gamage = damage;
-    }
 
     private void Start()
     {
@@ -53,7 +49,7 @@ public class SwordBehavoir : MonoBehaviour
         var size = new Vector2(2f, 3);
         float angle = _swordPointDirection.Angle;
 
-        _colliders = Physics2D.OverlapBoxAll(point, size, angle, 1 << _enemyLayerIndex);
+        _colliders = Physics2D.OverlapBoxAll(point, size, angle, 1 << EnemyLayerIndex);
 
         if(_colliders.Length == 0 && _isActive)
         {
@@ -65,9 +61,15 @@ public class SwordBehavoir : MonoBehaviour
         }
     }
 
+    public void SetSettings(float delayInSeconds, int damage)
+    {
+        _attackDelay = delayInSeconds;
+        _gamage = damage;
+    }
+
     private void MakeInactive()
     {
-        _swordAnimator.Play("Idle");
+        _swordAnimator.Play(IdleTitle);
         _isActive = false;
     }
 
@@ -79,7 +81,7 @@ public class SwordBehavoir : MonoBehaviour
 
     private void Attack()
     {
-        _swordAnimator.Play("SwortAttack");
+        _swordAnimator.Play(SwordAttackTitle);
 
         if (_colliders.Length == 0)
             return;

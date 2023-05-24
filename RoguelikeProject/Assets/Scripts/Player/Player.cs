@@ -14,6 +14,12 @@ public class Player : MonoBehaviour
 
     public int MaxHealth => _maxHealth;
 
+    private void Start()
+    {
+        Respawn();
+        GetComponentInChildren<SwordBehavoir>().SetSettings(_attackDelay, _damage);
+    }
+
     public void ApplyDamage(int damage)
     {
         if (damage > 0)
@@ -25,12 +31,6 @@ public class Player : MonoBehaviour
             if (_currentHealth <= 0)
                 Die();
         }
-    }
-
-    private void Start()
-    {
-        Respawn();
-        GetComponentInChildren<SwordBehavoir>().SetSettings(_attackDelay, _damage);
     }
 
     private void Die()

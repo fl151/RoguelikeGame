@@ -3,9 +3,9 @@ using UnityEngine;
 public class WalkState : State
 {
     [SerializeField] private float _speed;
+    [SerializeField] private LayerMask _layerIndexBarriers;
 
     private const float _MinRangeBetweenTarget = 0.1f;
-    private const int _LayerIndexBarriers = 3;
 
     private Vector3 _targetDirection;
     private Vector3 _moveDirection;
@@ -23,7 +23,8 @@ public class WalkState : State
         {
             _moveDirection = _targetDirection.normalized;
 
-            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, _targetDirection, _MinRangeBetweenTarget * 2, 1 << _LayerIndexBarriers);
+            RaycastHit2D[] hits = Physics2D.RaycastAll
+                (transform.position, _targetDirection, _MinRangeBetweenTarget * 2, _layerIndexBarriers);
 
             bool isCollider = false;
 

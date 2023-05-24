@@ -10,7 +10,7 @@ public class VectorMoveBullet : Bullet
     {
         base.Init(target, shootPoint, damage);
 
-        _moveDirection = (Target.transform.position - transform.position).normalized;
+        _moveDirection = (_target.transform.position - transform.position).normalized;
     }
 
     protected override void FlightBehavior()
@@ -27,9 +27,9 @@ public class VectorMoveBullet : Bullet
             return;
         }
 
-        if (collision.gameObject == Target.gameObject)
+        if (collision.gameObject == _target.gameObject)
         {
-            Target.ApplyDamage(Damage);
+            _target.ApplyDamage(_damage);
             gameObject.SetActive(false);
 
             return;

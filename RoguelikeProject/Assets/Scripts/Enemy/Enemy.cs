@@ -16,6 +16,16 @@ public class Enemy : MonoBehaviour
     public Player Target => _target;
     public DeathAnimation DeathEffect => _deathEffect;
 
+    private void Awake()
+    {
+        Instantiate(_prefab, gameObject.transform);
+    }
+
+    private void Start()
+    {
+        _currentHealth = _maxHealth;
+    }
+
     public void TryApplyDamage(int damage)
     {
         TakeDamage(damage);
@@ -43,16 +53,6 @@ public class Enemy : MonoBehaviour
             _currentHealth -= damage;
             Damaged?.Invoke();
         }
-    }
-
-    private void Awake()
-    {
-        Instantiate(_prefab, gameObject.transform);
-    }
-
-    private void Start()
-    {
-        _currentHealth = _maxHealth;
     }
 
     private void TryDie()

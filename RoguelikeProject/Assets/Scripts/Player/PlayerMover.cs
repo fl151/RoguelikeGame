@@ -4,14 +4,14 @@ using UnityEngine;
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] private LayerMask _layerIndexBarriers;
+
+    private const float MinRangeBetweenTarget = 0.1f;
 
     private Vector3 _targetPosition;
 
     private Vector3 _targetDirection;
     private Vector3 _moveDirection;
-
-    private const float _minRangeBetweenTarget = 0.1f;
-    private const int layerIndexBarriers = 3;
 
     public Vector3 MoveDirection => _moveDirection;
 
@@ -39,11 +39,12 @@ public class PlayerMover : MonoBehaviour
     {
         _targetDirection = _targetPosition - transform.position;
 
-        if (_targetDirection.magnitude > _minRangeBetweenTarget)
+        if (_targetDirection.magnitude > MinRangeBetweenTarget)
         {
             _moveDirection = _targetDirection.normalized;
 
-            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, _targetDirection, _minRangeBetweenTarget * 2, 1 << layerIndexBarriers);
+            RaycastHit2D[] hits = Physics2D.RaycastAll
+                (transform.position, _targetDirection, MinRangeBetweenTarget * 2, _layerIndexBarriers);
 
             bool isCollider = false;
 

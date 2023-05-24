@@ -10,9 +10,9 @@ public class BossVectorBullet : Bullet
     {
         gameObject.SetActive(true);
 
-        Damage = damage;
+        _damage = damage;
         _direction = direction;
-        Target = target;
+        _target = target;
 
         transform.position = shootPoint.transform.position;
     }
@@ -31,9 +31,9 @@ public class BossVectorBullet : Bullet
             return;
         }
 
-        if (collision.gameObject == Target.gameObject)
+        if (collision.gameObject == _target.gameObject)
         {
-            Target.ApplyDamage(Damage);
+            _target.ApplyDamage(_damage);
             gameObject.SetActive(false);
 
             return;

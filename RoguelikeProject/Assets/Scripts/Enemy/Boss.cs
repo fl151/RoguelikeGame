@@ -8,7 +8,6 @@ public class Boss : MonoBehaviour
 
     public event UnityAction Dead;
 
-
     private void OnEnable()
     {
         _enemy = GetComponent<Enemy>();

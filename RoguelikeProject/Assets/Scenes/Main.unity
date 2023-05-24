@@ -1339,6 +1339,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _layerIndexBarriers:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!58 &809897347
 CircleCollider2D:
   m_ObjectHideFlags: 0
