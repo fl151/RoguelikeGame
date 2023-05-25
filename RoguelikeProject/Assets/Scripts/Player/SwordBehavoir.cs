@@ -4,7 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(SwordPointDirection))]
 public class SwordBehavoir : MonoBehaviour
 {
-    private const int EnemyLayerIndex = 6;
+    [SerializeField] private LayerMask _enemyLayerIndex;
+
     private const string IdleTitle = "Idle";
     private const string SwordAttackTitle = "SwortAttack";
 
@@ -49,7 +50,7 @@ public class SwordBehavoir : MonoBehaviour
         var size = new Vector2(2f, 3);
         float angle = _swordPointDirection.Angle;
 
-        _colliders = Physics2D.OverlapBoxAll(point, size, angle, 1 << EnemyLayerIndex);
+        _colliders = Physics2D.OverlapBoxAll(point, size, angle, _enemyLayerIndex);
 
         if(_colliders.Length == 0 && _isActive)
         {

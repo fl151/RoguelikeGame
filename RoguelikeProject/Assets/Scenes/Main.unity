@@ -1321,6 +1321,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e205b36bb27873444841b33cafcfc8d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyLayerIndex:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &809897345 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3171483926963243647, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
