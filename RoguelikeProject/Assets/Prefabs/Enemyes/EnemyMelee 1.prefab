@@ -87,7 +87,7 @@ MonoBehaviour:
   - {fileID: 5519439936371069802}
   - {fileID: 124435868804579794}
   _speed: 3
-  _LayerIndexBarriers:
+  _layerIndexBarriers:
     serializedVersion: 2
     m_Bits: 8
 --- !u!114 &5519439936371069802
